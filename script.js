@@ -109,7 +109,7 @@ const loadWordDetails = (id) => {
 }
 
 const displayWordDetails = (word) => {
-    console.log(word)
+    // console.log(word)
     let details = document.getElementById('details');
     details.innerHTML = `
        <div class="p-1 rounded  max-w-[450px] mx-auto">
@@ -141,7 +141,9 @@ const synonym = (word) => {
 document.getElementById('search-btn').addEventListener('click', () => {
     let input = document.getElementById('search-input')
     let inputValue = input.value.toLowerCase();
-    fetch('https://openapi.programming-hero.com/api/words/all')
+
+    if(inputValue.length > 0){
+         fetch('https://openapi.programming-hero.com/api/words/all')
         .then(res => res.json())
         .then(data => {
             let wordData = data.data;
@@ -153,6 +155,10 @@ document.getElementById('search-btn').addEventListener('click', () => {
             displayWords(filterWordStarts);
 
         })
+
+    }
+    
+   
 
 
 
